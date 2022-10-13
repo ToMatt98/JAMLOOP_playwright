@@ -9,9 +9,8 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.27.1",
-    "typescript": "^4.8.4"
-  },
-  "dependencies": {
+    "typescript": "^4.8.4",
     "dotenv": "^16.0.3"
   }
 }
+

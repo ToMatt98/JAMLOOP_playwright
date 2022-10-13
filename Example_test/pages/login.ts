@@ -7,8 +7,8 @@ export class LoginPage {
   readonly btnLogin: Locator;
   readonly loginAlert: Locator;
   readonly clickLogout: Locator;
-  readonly accLogout: Locator;
-  readonly btnSignOut: Locator;
+  readonly selectLogout: Locator;
+  readonly btnLogout: Locator;
   readonly successLogOut: Locator;
   readonly failedLogin: Locator;
 
@@ -19,8 +19,8 @@ export class LoginPage {
     this.btnLogin = page.locator('button[type="submit"]');
     this.loginAlert = page.locator('.alert.alert-success.alert-dismissible');
     this.clickLogout = page.locator('span.text-xs.block');
-    this.accLogout = page.locator('a[href="/accounts/logout/"]');
-    this.btnSignOut = page.locator('button.btn-danger');
+    this.selectLogout = page.locator('a[href="/accounts/logout/"]');
+    this.btnLogout= page.locator('button.btn-danger');
     this.successLogOut = page.locator('div.alert');
     this.failedLogin = page.locator('div.alert-block.alert-danger');
   }
@@ -33,15 +33,10 @@ export class LoginPage {
     await expect(this.loginAlert).toContainText(username);
   }
 
-  async logout(username: string, password: string) {
-    await this.page.goto("/");
-    await this.loginInput.fill(username);
-    await this.passwordInput.fill(password);
-    await this.btnLogin.click();
-    await expect(this.loginAlert).toContainText(username);
+  async logout() {
     await this.clickLogout.click();
-    await this.accLogout.click();
-    await this.btnSignOut.click();
+    await this.selectLogout.click();
+    await this.btnLogout.click();
     await expect(this.successLogOut).toHaveClass('alert  alert-success alert-dismissible')
   }
 

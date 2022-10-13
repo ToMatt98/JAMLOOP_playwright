@@ -8,7 +8,8 @@ test('Login', async ({ page }) => {
 
 test('Logout', async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.logout(process.env.USERNAME!, process.env.PASSWORD!);
+  await loginPage.login(process.env.USERNAME!, process.env.PASSWORD!);
+  await loginPage.logout();
 });
 
 test('Login fail', async ({ page }) => {
